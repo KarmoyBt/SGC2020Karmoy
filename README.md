@@ -1,4 +1,4 @@
 # SGC2020Karmoy
 
-#Case
+# Case
 Build a working commerce implementation. Implement a product, organize products in categories/collections, build a checkout flow (minus payment of course. No phi$hing guys!) We have no special products in mind. Find some fun examples online: T-shirts, hoodies, or maybe a bow tie. You can implement the products and categories/collections in a CMS, pull data from an Open Source API or implement them yourself, it is totally up to you how to get going.  The choice of solution, platform and technology is open. We don’t judge based on specific frameworks or languages. This gives you the freedom to solve the challenge as a website, a smartphone app or something crazy for your TV. Go ahead code something awesome. :)  The development challenge does not require any design or user interface design skills. In this challenge we are evaluating your coding skills, not your design skills. We recommend that you use a free template or copy-paste your layout/UI from somewhere nice.
