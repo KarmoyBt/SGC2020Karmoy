@@ -2,24 +2,31 @@
 
 $( document ).ready(function() {
 
-	buclecartas(54);
+	buclecartas(54);// number of cards
 	
-	// console.log(carta1);
-	// galletas();
-	// console.log(Cookies.get());
-    console.log( "document ready" );
-    accion();
+	galletas();//setup cookies
+
+    accion();// events
+  
+    
 });
 
 
 
 function galletas() {
 
-	var fingerprint = new Fingerprint().get();
-	if(Cookies.get('hash')!=''){
-	Cookies.set('hash',fingerprint);
+	try {
+
+    console.log( Cookies.get('lista'));
+    dibujartabla(aArray(Cookies.get('lista')));
+
+
+	}catch{
+    console.log( 'sin Cookies' );
+
 	}
-	 console.log(fingerprint);
+
+
 }
 
 
@@ -43,9 +50,9 @@ function accion() {
 	 $('#buscador').click(function() {
 		$('#buscador').click(function() {
 			var cat=$(this).val();
-			// console.log(a);
 			$('.carta').hide();
-			$('.card.col-2.carta.'+cat).show();
+			$('.card.col-3.col-md-2.carta.'+cat).show();
+			
 
 			if (cat=='todo') {
 				$('.carta').show();
@@ -57,29 +64,30 @@ function accion() {
 	 });
 
 
-	 $('.glyphicon').click(function(event) {
+	 $('.carritoIcone').click(function(event) {
 	 	var clase =$(this).parent().parent().attr('id');//Id Div Padre
 	 	var img=$('#'+clase).find('img').attr('src');//Link Img
 	 	var name=$('#'+clase).find("h4").text();//Nombre
 	 	var price=$('#'+clase).find("p").text();//Precio
 
-	 	console.log('Nombre: '+name+' Precio: '+price+' link:'+img);
-
+	 	// console.log('Nombre: '+name+' Precio: '+price+' link:'+img);
+	 	try{
+	 		//Leer cooki
 	 	cartaCompra(img,name,price);
 
+
+	 	}catch{
+	 		Cookies.set('lista',name+','+price+','+img+',')
+
+	 	}
+
 	 });
 
 
-	 $('a').hover(function() {
-	 	
-	 }, function() {
-	 	var link = $(this).attr('href');
-	 	$(this).css('background-image:', 'url('+link+')');
-	 	console.log('hover');
-	 	/* Stuff to do when the mouse leaves the element */
+	 $('.fa-dumpster-fire').click(function(event) {
+	 	Cookies.remove('lista');
+	 	$('.bodyCart').html('');
 	 });
-
-
 
 }
 
@@ -87,36 +95,45 @@ function accion() {
 
 
 function cartaCompra(link, nombre, precio) {
-	var array= Cookies.get('lista');
+	var array = Cookies.get('lista');
 
 	var insert= [nombre,precio,link];
 
-	Cookies.set('lista',insert);
-	// console.log(Cookies.get('lista'));
+	$('.bodyCart').html('');
+	dibujartabla(aArray(Cookies.get('lista')));
 
-	dibujartabla(insert);
+	Cookies.set('lista',array+','+ insert );
+	// console.log(Cookies.get('lista'));
+	
+	// dibujartabla(Cookies.get('lista'));
+	
 
 }
+
+function aArray(txt) {
+	 var txt= txt.split(",");
+	 console.log(txt)
+	return txt
+}
+
 
 function dibujartabla(insert){
+var insert=insert;
 
-	$('.bodyCart').append('<tr>')
-	 // for (var i = insert.length - 1; i >= 0; i--) {
-	 	
-	 	
-			// insert[0] nombre
-			// insert[1] precio
-			// insert[2] link
-			// console.log(insert[i]);
-	 
-	 	$('.bodyCart').append('<td><p>'+insert[0]+'</p></td>');
-	 	$('.bodyCart').append('<td><p>'+insert[1]+'</p></td>');
-	 	$('.bodyCart').append('<td><a href='+insert[2]+'>link</a></td>');
-	 // }
-	$('.bodyCart').append('</tr>')
+	 for (var i = insert.length - 1; i >= 0; i=i-3) {
+
+		if(insert[i]!=""){
+		 	$('.bodyCart').append('<tr>')
+		 
+		 	$('.bodyCart').append('<td><p>'+insert[i]+'</p></td>');
+		 	$('.bodyCart').append('<td><p class="precio">'+insert[i+1]+'</p></td>');
+		 	$('.bodyCart').append('<td><a href='+insert[i+2]+'>link</a></td>');
+		 	$('.bodyCart').append('</tr>')
+		 }
+	 }
+	
 
 }
-
 
 
 
