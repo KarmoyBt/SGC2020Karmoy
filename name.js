@@ -37,7 +37,7 @@ Mod by Javi 02·03·2020
 
 function getRandomInt() {
 	// var int=Math.floor(Math.random() * (max - min)) + min);
-	var int= Math.floor(Math.random()*100);
+	var int= Math.floor(Math.random()*10090);
 	// console.log(int);
   	return parseInt(int);
 }
@@ -79,7 +79,6 @@ function generateName(){
 	// console.log('int1: '+int1*1+'  int2: '+int2*1);
 
 	var name = name1[int1] + ' ' +name2[int2];
-	// console.log(name);
 	return name;
 
 }

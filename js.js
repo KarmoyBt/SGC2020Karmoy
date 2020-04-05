@@ -33,12 +33,10 @@ function galletas() {
 function buclecartas(cantidad) {
 	for (var i = parseInt(cantidad) - 1; i >= 0; i--) {
 		var carta = new card('id'+i,generateName(),getRandomInt(),generateCategorie());
-		// var carta+i = new card(i,generateName(),getRandomInt());
+		if 
 
 	}
-	// var carta1 = new card(1,generateName(),getRandomInt(),generateCategorie());
-	// var carta2 = new card(2,generateName(),getRandomInt(),generateCategorie());
-
+	
 }
 
 
