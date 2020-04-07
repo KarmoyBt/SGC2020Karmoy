@@ -32,10 +32,11 @@ function galletas() {
 
 function buclecartas(cantidad) {
 	for (var i = parseInt(cantidad) - 1; i >= 0; i--) {
-		var carta = new card('id'+i,generateName(),getRandomInt(),generateCategorie());
+		var precio=getRandomInt(0,100)*1;
+		var carta = new card('id'+i,generateName(),precio,generateCategorie());
 
 }
-
+}
 
 
 
@@ -130,21 +131,3 @@ var insert=insert;
 
 }
 
-
-
-/*
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://opendata.aemet.es/opendata/api/valores/climatologicos/inventarioestaciones/todasestaciones/?api_key=jyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqbW9udGVyb2dAYWVtZXQuZXMiLCJqdGkiOiI3NDRiYmVhMy02NDEyLTQxYWMtYmYzOC01MjhlZWJlM2FhMWEiLCJleHAiOjE0NzUwNTg3ODcsImlzcyI6IkFFTUVUIiwiaWF0IjoxNDc0NjI2Nzg3LCJ1c2VySWQiOiI3NDRiYmVhMy02NDEyLTQxYWMtYmYzOC01MjhlZWJlM2FhMWEiLCJyb2xlIjoiIn0.xh3LstTlsP9h5cxz3TLmYF4uJwhOKzA0B6-vH8lPGGw",
-  "method": "GET",
-  "headers": {
-    "cache-control": "no-cache"
-  }
-}
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-
-*/
