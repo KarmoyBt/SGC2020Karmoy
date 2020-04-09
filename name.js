@@ -23,7 +23,7 @@ function card(id,nombre, precio,divClass) {
 	
 
 var stringCard=
-'<div class="card col-3 col-md-2 carta '+this.divClass+'"id="'+this.id+'" ><img src="https://i.picsum.photos/id/'+this.precio+'/200/200.jpg"alt="Avatar"><div class="container"><h4>'+this.nombre+'</h4><p>'+this.precio+'€</p><i class="fas fa-cart-plus carritoIcone"></i></div></div>'
+'<div class="card col-3 col-md-2 carta '+this.divClass+'"id="'+this.id+'" ><img src="https://i.picsum.photos/id/'+this.precio+'/200/200.jpg"alt="Avatar"><div class="container"><h4>'+this.nombre+'</h4><p><span class="precio">'+this.precio+'</span><span>€</span></p><i class="fas fa-cart-plus carritoIcone"></i></div></div>'
 
 $('.panel').append(stringCard);
 
@@ -38,7 +38,7 @@ Mod by Javi 02·03·2020
 function getRandomInt(min, max) {
 	var min= min*1;
 	var max= max*1;
-	// var int=Math.floor(Math.random() * (max - min)) + min);
+	
 	var int= Math.floor(Math.random() * (max - min)) + min;
 	// console.log(int);
   	return parseInt(int);
@@ -49,7 +49,7 @@ function getRandomInt(min, max) {
 function generateCategorie(){
 	var categoria = ["GrupoA","GrupoB","TeamC","TeamD"];
 
-	var int1 =getRandomInt(categoria.length*1 + 1)%categoria.length;
+	var int1 =getRandomInt(0,categoria.length*1 + 1)%categoria.length;
 
 	 addselect(categoria);
 	return categoria[int1];
@@ -78,7 +78,7 @@ function generateName(){
 
 	var int1 =getRandomInt(0,name1.length*1 + 1);
 	var int2 =getRandomInt(0,name2.length*1 + 1);
-	console.log('int1: '+int1*1+'  int2: '+int2*1);
+	// console.log('int1: '+int1*1+'  int2: '+int2*1);
 
 	var name = name1[int1] + ' ' +name2[int2];
 	return name;
