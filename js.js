@@ -16,10 +16,8 @@ $( document ).ready(function() {
 function galletas() {
 
 	try {
-
-    console.log( Cookies.get('lista'));
+    // console.log( Cookies.get('lista'));
     dibujartabla(aArray(Cookies.get('lista')));
-
 
 	}catch{
     console.log( 'sin Cookies' );
@@ -31,9 +29,16 @@ function galletas() {
 
 
 function buclecartas(cantidad) {
+	//card generator , coubnt all card and make new from "cantidad"
+	var count=0;
+	$(".carta").each(function() {
+		count++;
+	});
+
 	for (var i = parseInt(cantidad) - 1; i >= 0; i--) {
-		var precio=getRandomInt(0,100)*1;
-		var carta = new card('id'+i,generateName(),precio,generateCategorie());
+		// var precio=;
+
+		var carta = new card('id'+((i+count)*1),generateName(),getRandomInt(0,100)*1,generateCategorie());
 
 }
 }
@@ -87,6 +92,13 @@ function accion() {
 	 	eliminarCart()
 	 });
 
+	 $('.fa-plus-circle').hover(function() {
+	 	buclecartas(25);
+	 }, function() {
+	 	/* Stuff to do when the mouse leaves the element */
+	 });
+
+
 	 $('.hoverImg').hover(function() {
 	 	console.log('hover:'+this);
 	 	var url= $('.hoverImg').attr('href');
@@ -112,7 +124,7 @@ function accion() {
 function cartaCompra(link, nombre, precio) {
 
 	var array = Cookies.get('lista');
-	console.log(aArray(array));
+	// console.log(aArray(array));
 
 	var insert= [","+nombre,precio,link];
 

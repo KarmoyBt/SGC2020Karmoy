@@ -20,7 +20,16 @@ function card(id,nombre, precio,divClass) {
 	this.GetPrecio= function() {
 		return this.precio;
 	}
+
+	 var identificator=this.id.substr(2)
 	
+
+	var infoPhoto=$.get('https://picsum.photos/id/'+identificator+'/info', function(data) {
+			infoPhoto.error(function() {
+	console.log("error");
+	});
+	});
+
 
 var stringCard=
 '<div class="card col-3 col-md-2 carta '+this.divClass+'"id="'+this.id+'" ><img src="https://i.picsum.photos/id/'+this.precio+'/200/200.jpg"alt="Avatar"><div class="container"><h4>'+this.nombre+'</h4><p><span class="precio">'+this.precio+'</span><span>€</span></p><i class="fas fa-cart-plus carritoIcone"></i></div></div>'
