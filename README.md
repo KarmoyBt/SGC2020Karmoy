@@ -22,3 +22,5 @@ The first card, there is a filter by categories, the cart with a table and icone
 And finally I have 2 errors,
 -Category filter doesn't work when I update DOM, I don't know why selection doesn't work.
 -I want to move the cursor over the "link" to show the image. I want to do it with the pointer, but this function does not work less in Internet Explorer.
+
+![image info](https://raw.githubusercontent.com/KarmoyBt/SGC2020Karmoy/master/Carta.png)
