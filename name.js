@@ -24,24 +24,25 @@ function card(id,nombre, precio,divClass) {
 	 var identificator=this.id.substr(2)
 	
 
-	var infoPhoto=$.get('', function(data) {
+	// var infoPhoto=$.get('', function(data) {
 
-	});
+	// });
 
-	$.ajax({
-		url: 'https://picsum.photos/id/'+identificator+'/info',
-		type: 'get',
-	})
-	.fail( function( jqXHR, textStatus, errorThrown ) {
-		// console.log(jqXHR,textStatus,errorThrown);
-		console.log(textStatus)
-	})
-	.always(function() {
-		var stringCard=
+	// $.ajax({
+	// 	url: 'https://picsum.photos/id/'+identificator+'/info',
+	// 	type: 'get',
+	// })
+	// .fail( function( jqXHR, textStatus, errorThrown ) {
+	// 	// console.log(jqXHR,textStatus,errorThrown);
+	// 	console.log(textStatus)
+	// })
+	// .always(function() {
+
+	// });	
+	var stringCard=
 		'<div class="card col-3 col-md-2 carta '+divClass+'"id="'+id+'" ><img src="https://i.picsum.photos/id/'+precio+'/200/200.jpg"alt="Avatar"><div class="container"><h4>'+nombre+'</h4><p><span class="precio">'+precio+'</span><span>€</span></p><i class="fas fa-cart-plus carritoIcone"></i></div></div>'
 
 		$('.panel').append(stringCard);
-	});
 	
 
 
@@ -76,15 +77,15 @@ function generateCategorie(){
 }
 
 function addselect(categoria) {
-	$('.buscador').html('<select id="buscador"><option value="todo">All</option>')
+	$('#buscador').html('<select id="search"><option value="todo">All</option>')
 	for (var i = categoria.length - 1; i >= 0; i--) {
 		
-		var option='<option class="'+categoria[i]+'" value="'+categoria[i]+'">'+categoria[i]+'</option>';
+		var option='<option value="'+categoria[i]+'">'+categoria[i]+'</option>';
 
-		$('#buscador').append(option);
+		$('#search').append(option);
 		
 	}
-	$('.buscador').append("</select>")
+	$('#buscador').append("</select>")
 
 
 }
@@ -100,7 +101,6 @@ function generateName(){
 	var int1 =getRandomInt(0,name1.length*1 + 1);
 	var int2 =getRandomInt(0,name2.length*1 + 1);
 	// console.log('int1: '+int1*1+'  int2: '+int2*1);
-
 	var name = name1[int1] + ' ' +name2[int2];
 	return name;
 

@@ -9,6 +9,8 @@ $( document ).ready(function() {
     accion();// events
   
     $('.totalPrice').html(calcularTotal(".precioCart")+"€");
+
+
 });
 
 
@@ -48,19 +50,17 @@ function buclecartas(cantidad) {
 function accion() {
 
 		 //Buscador/ filtro categorias
-	 $('#buscador').click(function() {
-		$('#buscador').click(function() {
+	 $('#search').click(function() {
+	 	// console.log(this);
+		$('#search').click(function() {
+			console.log(this);
 			var cat=$(this).val();
 			$('.carta').hide();
 			$('.card.col-3.col-md-2.carta.'+cat).show();
-			
 
 			if (cat=='todo') {
 				$('.carta').show();
-
 			}
-			
-
 		});	 	
 	 });
 
