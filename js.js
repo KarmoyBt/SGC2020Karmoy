@@ -8,7 +8,7 @@ $( document ).ready(function() {
 
     accion();// events
   
-    $('.totalPrice').html(calcularTotal()+"€");
+    $('.totalPrice').html(calcularTotal(".precioCart")+"€");
 });
 
 
@@ -66,24 +66,7 @@ function accion() {
 
 
 	 $('.carritoIcone').click(function(event) {
-	 	var clase =$(this).parent().parent().attr('id');//Id Div Padre
-	 	var img=$('#'+clase).find('img').attr('src');//Link Img
-	 	var name=$('#'+clase).find("h4").text();//Nombre
-	 	var price=$('#'+clase).find(".precio").text();//Precio
-
-	 	var array= [name,price,img];
-	 	// console.log('Nombre: '+name+' Precio: '+price+' link:'+img);
-	 	try{
-	 		//Leer cooki
-	 	cartaCompra(img,name,price);
-
-
-	 	}catch{
-	 		Cookies.set('lista',array)
-
-	 	}
-
-	 	$('.totalPrice').html(calcularTotal()+"€");
+	 	carrito();
 	 });
 
 
@@ -98,27 +81,47 @@ function accion() {
 	 	/* Stuff to do when the mouse leaves the element */
 	 });
 
-
-	 $('.hoverImg').hover(function() {
-	 	console.log('hover:'+this);
-	 	var url= $('.hoverImg').attr('href');
-
-
+	 $('#btnCart').click(function(event) {
+	 	pedido();
 	 	
-	 }, function() {
-	 	console.log('Exit hover:'+this);
 	 });
 
 
-	 $('a[data-toggle="tooltip"]').tooltip({
-	     animated: 'fade',
-	     placement: 'bottom',
-	     html: true
-	 });
+	$(".btnCart").click(function(){
+	  $("#myModal").modal();
+	  $('.cardCarrito').hide();
+	  });
+
+	$("#myModal").on('hidden.bs.modal', function(){
+	  $('.cardCarrito').show();
+
+	});
+
 
 }
 
 
+
+function carrito() {
+		 	var clase =$(this).parent().parent().attr('id');//Id Div 
+	 	
+	 	var img=$('#'+clase).find('img').attr('src');
+	 	var name=$('#'+clase).find("h4").text();
+	 	var price=$('#'+clase).find(".precio").text();
+
+	 	var array= [name,price,img];
+	 	// console.log('Nombre: '+name+' Precio: '+price+' link:'+img);
+	 	try{
+	 	cartaCompra(img,name,price);
+
+
+	 	}catch{
+	 		Cookies.set('lista',array)
+
+	 	}
+
+	 	$('.totalPrice').html(calcularTotal(".precioCart")+"€");
+}
 
 
 function cartaCompra(link, nombre, precio) {
@@ -164,10 +167,10 @@ var longitudProduct=3;
 
 }
 
-function calcularTotal() {
+function calcularTotal(nombre) {
 	var total = 0;
 	
-	$(".precioCart").each(function() {
+	$(nombre).each(function() {
 
 	    var cant = $(this).text();
 
@@ -183,4 +186,13 @@ function eliminarCart() {
 	Cookies.remove('lista');
 	$('.bodyCart').html('');
 	$('.totalPrice').html(calcularTotal()+"€");
+}
+
+function pedido(argument) {
+
+	Cookies.get('lista');
+	$().each(function(index, el) {
+		
+	});
+	console.log();
 }

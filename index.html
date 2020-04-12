@@ -45,6 +45,46 @@
 	</header>
 	<!--Main Navigation-->
 
+	<!-- Modal -->
+	<div class="modal fade" id="myModal">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <h4 class="modal-title">Cart</h4>
+	        </div>
+	        <div class="modal-body">
+	          <table>
+	          	<thead>
+	          		<tr>
+	          			<th>Name</th>
+	          			<th>Price</th>
+	          			<th>Link</th>
+
+	          		</tr>
+	          	</thead>
+	          	<tbody class="bodyCart">
+
+	          	</tbody>
+
+	          </table>
+	        </div>
+	        <div class="modal-footer">
+	        	<h2>Total:<span class="totalPrice"></span></h2>
+	        	<button type="button" class="btn btn-default" data-dismiss="modal">Buy</button>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+	  
+	</div>
+
+	<!-- END MODAL -->
+
+
 	<!--Main Layout-->
 	<main class="text-center my-5">
 
@@ -52,7 +92,7 @@
 
 	    <div class="row panel">
 
-	    	<div class="card col-3 col-md-2 ">
+	    	<div class="card col-3 col-md-2  cardCarrito">
 				<div class="container">
 					<h5>Categorie</h5>
 				<div class="buscador">
@@ -73,7 +113,7 @@
 							<tbody class="bodyCart">
 
 							</tbody>
-							<caption>Total:<span class="totalPrice"></span></caption>
+							<caption>Total:<span class="totalPrice"></span><div class="btn-info btnCart">Buy</div></caption>
 						</table>
 					</div>			
 				</div>
